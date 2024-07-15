@@ -1,0 +1,20 @@
+name: testing-framework
+channels:
+  - defaults
+dependencies:
+  - python=3.11.0
+  - pip
+  - pip:
+    - pytest
+    - pytest-html
+    - pytest-json
+    - playwright
+    - requests
+    - selenium
+    - pycodestyle
+    - pydocstyle
+    - jsonpath-ng
+    - pymssql==2.2.7
+    - locust
+    - Jinja2
+    - jq
