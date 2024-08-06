@@ -18,3 +18,8 @@ dependencies:
     - locust
     - Jinja2
     - jq
+    - logstash
+    - jsonschema
+    - python-dotenv
+variables:
+    PYTHONPATH: "/home/victor-linux/miniconda3/envs/testing-framework:$PYTHONPATH"
