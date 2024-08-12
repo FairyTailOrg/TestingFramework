@@ -1,6 +1,10 @@
+import os
+
 from tests.web.basetestcase import BaseTestCase
 
 
 class TestLogin(BaseTestCase):
     def test_valid_login(self):
-        self.navigate_to("https://example.com/login")
+        username = os.getenv("EXISTENTPATIENT_USER")
+        password = os.getenv("EXISTENTPATIENT_PASSWORD")
+        self.login.login(username, password)

@@ -1,10 +1,13 @@
 import pytest
 
+from custom_lib.web_lib import LoginPage
+
+
 class BaseTestCase:
-    
     @pytest.fixture(autouse=True)
     def setup(self, page):
         self.page = page
+        self.login = LoginPage(self.page)
 
     def navigate_to(self, url):
         self.page.goto(url)

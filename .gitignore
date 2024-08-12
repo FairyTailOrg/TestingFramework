@@ -133,6 +133,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+config/
 env.bak/
 venv.bak/
 

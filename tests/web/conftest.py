@@ -1,18 +1,45 @@
 import os
-from dotenv import load_dotenv
+
 import pytest
+from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
+
+from custom_lib.web_lib import LoginPage
+from lib.logger_config import setup_logger
+
+
+@pytest.fixture(scope="session")
+def logger():
+    return setup_logger()
 
 @pytest.fixture(scope="session")
 def playwright():
     with sync_playwright() as p:
         yield p
 
-@pytest.fixture(scope="session", params=["chromium", "firefox", "webkit"])
-def browser(playwright, request):
-    browser = getattr(playwright, request.param).launch(headless=False)
-    yield browser
-    browser.close()
+@pytest.fixture(scope="session")
+def browser_name(pytestconfig):
+    browser_option = pytestconfig.getoption("browser").lower()
+    if browser_option == "all":
+        return ["chromium", "firefox", "webkit"]
+    elif browser_option in ["chromium", "firefox", "webkit"]:
+        return [browser_option]
+    else:
+        raise ValueError(f"Unsupported browser option: {browser_option}")
+    
+@pytest.fixture(scope="session")
+def browsers(playwright, browser_name):
+    return [getattr(playwright, name).launch(headless=True) for name in browser_name]
+
+@pytest.fixture(scope="function")
+def browser(browsers, request):
+    return browsers[request.param] if hasattr(request, 'param') else browsers[0]
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_generate_tests(metafunc):
+    if "browser" in metafunc.fixturenames and metafunc.config.getoption("browser") == "all":
+        metafunc.parametrize("browser", range(len(metafunc.config._metadata["browsers"])))
+
 
 @pytest.fixture(scope="function")
 def page(browser):
@@ -23,14 +50,13 @@ def page(browser):
     context.close()
 
 def pytest_addoption(parser):
-    parser.addoption("--env", action="store", default="dev", help="Environment to run tests against")
+    parser.addoption("--env", action="store", default="qa", help="Environment to run tests against")
+    parser.addoption("--browser", action="store", default="chromium", help="Browser to execute the test, you can use: chromium, firefox, webkit or All(for the 3 mentioned before)")
 
 @pytest.fixture(scope="session", autouse=True)
-def load_env():
-    environment = os.getenv("ENV", "development")
-    if environment == "production":
-        load_dotenv("config/config_production.env")
-    elif environment == "qa":
-        load_dotenv("config/config_qa.env")
-    else:
-        load_dotenv("config/config_dev.env")
+def load_env(pytestconfig):
+    environment = pytestconfig.getoption("env")
+    
+    env_file = f"config/config_{environment}.env"
+    
+    load_dotenv(dotenv_path=env_file)

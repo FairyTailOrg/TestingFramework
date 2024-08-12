@@ -1,24 +1,45 @@
+import os
+
 from playwright.sync_api import Page
+
+from lib.logger_config import setup_logger
+from pages.pom import Pom
+
 
 class LoginPage:
     def __init__(self, page: Page):
         self.page = page
-
-    def navigate_to_login_page(self, login_url: str):
+        self.pom = Pom()
+        self.logger = setup_logger()
+        
+    def go_to_landing_page(self, login_url: str):
         """Navega a la página de inicio de sesión."""
         self.page.goto(login_url)
+        self.page.wait_for_selector(self.pom.landingpage.lodus_icon_desktop)
 
-    def login(self, username: str, password: str, username_selector: str, password_selector: str, submit_button_selector: str):
+    def login(self, username: str, password: str):
         """Realiza el login con las credenciales proporcionadas."""
-        self.page.fill(username_selector, username)
-        self.page.fill(password_selector, password)
-        self.page.click(submit_button_selector)
-        self.page.wait_for_navigation()
+        url = os.getenv("FRONTEND_URL")  # Get the url used.
+        self.logger.info(url)
+        self.go_to_landing_page(url)
+        self.page.click(self.pom.landingpage.login_button_desktop)
+        try:
+            self.page.click(self.pom.login_modal.accept_terms_of_use)
+        except Exception as e:
+            print(f"Error al aceptar los términos de uso: {e}")
+        self.page.click(self.pom.login_modal.login_button)
 
-    def login_and_verify(self, login_url: str, username: str, password: str, username_selector: str, password_selector: str, submit_button_selector: str):
-        """Realiza el login y verifica el éxito."""
-        self.navigate_to_login_page(login_url)
-        self.login(username, password, username_selector, password_selector, submit_button_selector)
+        self.page.wait_for_selector(self.pom.athena_cred.email_input)
+        self.page.fill(self.pom.athena_cred.email_input, username)
+        self.page.fill(self.pom.athena_cred.password_input, password)
+        self.page.click(self.pom.athena_cred.login_button)
+        self.page.click(self.pom.athena_cred.select_department)
 
-        # Verifica si el login fue exitoso
-        return self.page.url != login_url
+        if self.page.wait_for_url == "{url}/dashboard":
+            return True
+        return False
+
+
+
+
+
