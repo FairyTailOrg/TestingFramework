@@ -26,7 +26,7 @@ class LoginPage:
         try:
             self.page.click(self.pom.login_modal.accept_terms_of_use)
         except Exception as e:
-            print(f"Error al aceptar los términos de uso: {e}")
+            self.logger.error(f"Error al aceptar los términos de uso: {e}")
         self.page.click(self.pom.login_modal.login_button)
 
         self.page.wait_for_selector(self.pom.athena_cred.email_input)

@@ -10,3 +10,41 @@
 2024-08-12 16:53:40,560 - mi_logger - INFO - None
 2024-08-12 16:54:39,852 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
 2024-08-12 17:09:42,124 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:14:01,317 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:14:01,317 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:14:01,318 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:14:01,318 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:14:01,318 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:14:01,318 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:17:22,519 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:17:22,519 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:17:22,557 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:17:22,557 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:17:22,558 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:17:22,558 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:20:51,719 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:20:51,719 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:20:51,720 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:20:51,720 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:20:51,720 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:20:51,720 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:21:37,326 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:21:37,326 - mi_logger - INFO - qatest_only_arbor@yopmail.com
+2024-08-12 17:21:37,344 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:21:37,344 - mi_logger - INFO - 3PillarGlobal
+2024-08-12 17:21:37,363 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:21:37,363 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:31:46,450 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:31:46,450 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:32:51,151 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:32:51,151 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:32:54,490 - mi_logger - ERROR - Error al aceptar los términos de uso: Page.click: Unexpected token "/" while parsing selector "/html/body//div/span/input"
+Call log:
+waiting for /html/body//div/span/input
+
+2024-08-12 17:32:54,490 - mi_logger - ERROR - Error al aceptar los términos de uso: Page.click: Unexpected token "/" while parsing selector "/html/body//div/span/input"
+Call log:
+waiting for /html/body//div/span/input
+
+2024-08-12 17:37:04,293 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-12 17:37:04,293 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net

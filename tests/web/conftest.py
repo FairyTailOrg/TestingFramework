@@ -28,8 +28,8 @@ def browser_name(pytestconfig):
         raise ValueError(f"Unsupported browser option: {browser_option}")
     
 @pytest.fixture(scope="session")
-def browsers(playwright, browser_name):
-    return [getattr(playwright, name).launch(headless=True) for name in browser_name]
+def browsers(pytestconfig, playwright, browser_name):
+    return [getattr(playwright, name).launch(headless=pytestconfig.getoption("headless")) for name in browser_name]
 
 @pytest.fixture(scope="function")
 def browser(browsers, request):
@@ -52,6 +52,7 @@ def page(browser):
 def pytest_addoption(parser):
     parser.addoption("--env", action="store", default="qa", help="Environment to run tests against")
     parser.addoption("--browser", action="store", default="chromium", help="Browser to execute the test, you can use: chromium, firefox, webkit or All(for the 3 mentioned before)")
+    parser.addoption("--headless", action="store_true", default=False, help="Choose if headless or not")
 
 @pytest.fixture(scope="session", autouse=True)
 def load_env(pytestconfig):

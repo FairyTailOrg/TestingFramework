@@ -1,6 +1,7 @@
 import pytest
 
 from custom_lib.web_lib import LoginPage
+from lib.logger_config import setup_logger
 
 
 class BaseTestCase:
@@ -8,6 +9,7 @@ class BaseTestCase:
     def setup(self, page):
         self.page = page
         self.login = LoginPage(self.page)
+        self.logger = setup_logger()
 
     def navigate_to(self, url):
         self.page.goto(url)
