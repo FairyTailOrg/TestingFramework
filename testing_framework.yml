@@ -6,7 +6,9 @@ dependencies:
   - pip
   - pip:
     - pytest
+    - pytest-xdist
     - pytest-html
+    - pytest-html-reporter
     - pytest-json
     - pytest-env
     - playwright

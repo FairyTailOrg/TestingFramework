@@ -20,7 +20,6 @@ class LoginPage:
     def login(self, username: str, password: str):
         """Realiza el login con las credenciales proporcionadas."""
         url = os.getenv("FRONTEND_URL")  # Get the url used.
-        self.logger.info(url)
         self.go_to_landing_page(url)
         self.page.click(self.pom.landingpage.login_button_desktop)
         try:

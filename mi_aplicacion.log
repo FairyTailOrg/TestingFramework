@@ -1,12 +1,20 @@
-2024-08-13 13:57:44,923 - mi_logger - INFO - <class 'list'>
-2024-08-13 13:57:44,923 - mi_logger - INFO - <class 'list'>
-2024-08-13 13:58:19,733 - mi_logger - INFO - <class 'dict'>
-2024-08-13 13:58:19,733 - mi_logger - INFO - <class 'dict'>
-2024-08-13 13:59:46,241 - mi_logger - INFO - <class 'method'>
-2024-08-13 13:59:46,241 - mi_logger - INFO - <class 'method'>
-2024-08-13 14:00:28,532 - mi_logger - INFO - <bound method Scheduling.appt_reasons of <custom_lib.schemas.types.Scheduling object at 0x106eafb90>>
-2024-08-13 14:00:28,532 - mi_logger - INFO - <bound method Scheduling.appt_reasons of <custom_lib.schemas.types.Scheduling object at 0x106eafb90>>
-2024-08-13 14:00:42,092 - mi_logger - INFO - {'$schema': 'http://json-schema.org/draft-07/schema#', 'title': 'Generated schema for Root', 'type': 'array', 'items': {'type': 'object', 'properties': {'paAppointmentReasonId': {'type': 'number'}, 'isNewPatient': {'type': 'boolean'}, 'appointmentReason': {'type': 'string'}, 'description': {'type': 'string'}, 'userExperience': {'type': 'string'}, 'ahAppointmentTypes': {'type': 'array', 'items': {'type': 'object', 'properties': {'ahAppointmentTypeId': {'type': 'number'}, 'appointmentTypeId': {'type': 'number'}, 'practiceId': {'type': 'number'}, 'name': {'type': 'string'}, 'shortname': {'type': 'string'}, 'isTelehealth': {'type': 'boolean'}}, 'required': ['ahAppointmentTypeId', 'appointmentTypeId', 'practiceId', 'name', 'shortname', 'isTelehealth']}}, 'patientBookingNote': {'type': 'string'}, 'paAppointmentTypeId': {'type': 'number'}}, 'required': ['paAppointmentReasonId', 'isNewPatient', 'appointmentReason', 'description', 'userExperience', 'ahAppointmentTypes', 'patientBookingNote', 'paAppointmentTypeId']}}
-2024-08-13 14:00:42,092 - mi_logger - INFO - {'$schema': 'http://json-schema.org/draft-07/schema#', 'title': 'Generated schema for Root', 'type': 'array', 'items': {'type': 'object', 'properties': {'paAppointmentReasonId': {'type': 'number'}, 'isNewPatient': {'type': 'boolean'}, 'appointmentReason': {'type': 'string'}, 'description': {'type': 'string'}, 'userExperience': {'type': 'string'}, 'ahAppointmentTypes': {'type': 'array', 'items': {'type': 'object', 'properties': {'ahAppointmentTypeId': {'type': 'number'}, 'appointmentTypeId': {'type': 'number'}, 'practiceId': {'type': 'number'}, 'name': {'type': 'string'}, 'shortname': {'type': 'string'}, 'isTelehealth': {'type': 'boolean'}}, 'required': ['ahAppointmentTypeId', 'appointmentTypeId', 'practiceId', 'name', 'shortname', 'isTelehealth']}}, 'patientBookingNote': {'type': 'string'}, 'paAppointmentTypeId': {'type': 'number'}}, 'required': ['paAppointmentReasonId', 'isNewPatient', 'appointmentReason', 'description', 'userExperience', 'ahAppointmentTypes', 'patientBookingNote', 'paAppointmentTypeId']}}
-2024-08-13 14:05:04,256 - mi_logger - INFO - Instance correctly validated
-2024-08-13 14:05:04,256 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:31:52,844 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:31:52,844 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:31:56,894 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:31:56,894 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:31:56,894 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:31:56,894 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:34:28,247 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:34:28,247 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:34:30,621 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:34:30,621 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:34:30,621 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:34:30,621 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 17:37:19,958 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:37:19,958 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:41:55,899 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:41:55,899 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:45:51,221 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:45:51,221 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:47:57,715 - mi_logger - INFO - Instance correctly validated
+2024-08-13 17:47:57,715 - mi_logger - INFO - Instance correctly validated
