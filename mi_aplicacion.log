@@ -1,80 +1,12 @@
-2024-08-06 14:32:45,221 - mi_logger - INFO - Instance correctly validated
-2024-08-06 14:32:49,654 - mi_logger - INFO - Instance correctly validated
-2024-08-06 14:38:22,770 - mi_logger - INFO - Instance correctly validated
-2024-08-12 16:41:15,617 - mi_logger - INFO - None
-2024-08-12 16:41:49,597 - mi_logger - INFO - None
-2024-08-12 16:42:37,777 - mi_logger - INFO - None
-2024-08-12 16:44:40,016 - mi_logger - INFO - None
-2024-08-12 16:45:14,073 - mi_logger - INFO - None
-2024-08-12 16:53:14,716 - mi_logger - INFO - None
-2024-08-12 16:53:40,560 - mi_logger - INFO - None
-2024-08-12 16:54:39,852 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:09:42,124 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:14:01,317 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:14:01,317 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:14:01,318 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:14:01,318 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:14:01,318 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:14:01,318 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:17:22,519 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:17:22,519 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:17:22,557 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:17:22,557 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:17:22,558 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:17:22,558 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:20:51,719 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:20:51,719 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:20:51,720 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:20:51,720 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:20:51,720 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:20:51,720 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:21:37,326 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:21:37,326 - mi_logger - INFO - qatest_only_arbor@yopmail.com
-2024-08-12 17:21:37,344 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:21:37,344 - mi_logger - INFO - 3PillarGlobal
-2024-08-12 17:21:37,363 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:21:37,363 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:31:46,450 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:31:46,450 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:32:51,151 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:32:51,151 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:32:54,490 - mi_logger - ERROR - Error al aceptar los términos de uso: Page.click: Unexpected token "/" while parsing selector "/html/body//div/span/input"
-Call log:
-waiting for /html/body//div/span/input
-
-2024-08-12 17:32:54,490 - mi_logger - ERROR - Error al aceptar los términos de uso: Page.click: Unexpected token "/" while parsing selector "/html/body//div/span/input"
-Call log:
-waiting for /html/body//div/span/input
-
-2024-08-12 17:37:04,293 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:37:04,293 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:43:24,069 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:43:24,069 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:45:22,862 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:45:22,862 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:46:06,038 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:46:06,038 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:46:21,249 - mi_logger - INFO - https://myidentity-support.platform.athenahealth.com/oauth2/aus2hfei6ookPyyCA297/v1/authorize?client_id=0oaklgxz23NS0DXh1297&response_type=code&redirect_uri=https%3A%2F%2Fuwh-scheduling-qa.azurewebsites.net%2Fauth%2Ftoken-exchange&scope=openid%20profile%20launch%2Fpatient%20fhirUser&state=123&aud=https%3A%2F%2Fapi.preview.platform.athenahealth.com%2Ffhir%2Fr4#waiting
-2024-08-12 17:46:21,249 - mi_logger - INFO - https://myidentity-support.platform.athenahealth.com/oauth2/aus2hfei6ookPyyCA297/v1/authorize?client_id=0oaklgxz23NS0DXh1297&response_type=code&redirect_uri=https%3A%2F%2Fuwh-scheduling-qa.azurewebsites.net%2Fauth%2Ftoken-exchange&scope=openid%20profile%20launch%2Fpatient%20fhirUser&state=123&aud=https%3A%2F%2Fapi.preview.platform.athenahealth.com%2Ffhir%2Fr4#waiting
-2024-08-12 17:46:54,231 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:46:54,231 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:47:08,408 - mi_logger - INFO - https://myidentity-support.platform.athenahealth.com/oauth2/aus2hfei6ookPyyCA297/v1/authorize?client_id=0oaklgxz23NS0DXh1297&response_type=code&redirect_uri=https%3A%2F%2Fuwh-scheduling-qa.azurewebsites.net%2Fauth%2Ftoken-exchange&scope=openid%20profile%20launch%2Fpatient%20fhirUser&state=123&aud=https%3A%2F%2Fapi.preview.platform.athenahealth.com%2Ffhir%2Fr4#waiting
-2024-08-12 17:47:08,408 - mi_logger - INFO - https://myidentity-support.platform.athenahealth.com/oauth2/aus2hfei6ookPyyCA297/v1/authorize?client_id=0oaklgxz23NS0DXh1297&response_type=code&redirect_uri=https%3A%2F%2Fuwh-scheduling-qa.azurewebsites.net%2Fauth%2Ftoken-exchange&scope=openid%20profile%20launch%2Fpatient%20fhirUser&state=123&aud=https%3A%2F%2Fapi.preview.platform.athenahealth.com%2Ffhir%2Fr4#waiting
-2024-08-12 17:50:12,354 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:50:12,354 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:50:28,372 - mi_logger - INFO - https://myidentity-support.platform.athenahealth.com/oauth2/aus2hfei6ookPyyCA297/v1/authorize?client_id=0oaklgxz23NS0DXh1297&response_type=code&redirect_uri=https%3A%2F%2Fuwh-scheduling-qa.azurewebsites.net%2Fauth%2Ftoken-exchange&scope=openid%20profile%20launch%2Fpatient%20fhirUser&state=123&aud=https%3A%2F%2Fapi.preview.platform.athenahealth.com%2Ffhir%2Fr4#waiting
-2024-08-12 17:50:28,372 - mi_logger - INFO - https://myidentity-support.platform.athenahealth.com/oauth2/aus2hfei6ookPyyCA297/v1/authorize?client_id=0oaklgxz23NS0DXh1297&response_type=code&redirect_uri=https%3A%2F%2Fuwh-scheduling-qa.azurewebsites.net%2Fauth%2Ftoken-exchange&scope=openid%20profile%20launch%2Fpatient%20fhirUser&state=123&aud=https%3A%2F%2Fapi.preview.platform.athenahealth.com%2Ffhir%2Fr4#waiting
-2024-08-12 17:51:48,081 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:51:48,081 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:52:11,973 - mi_logger - INFO - None
-2024-08-12 17:52:11,973 - mi_logger - INFO - None
-2024-08-12 17:55:43,688 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:55:43,688 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:59:47,588 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 17:59:47,588 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 18:01:38,614 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 18:01:38,614 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 18:03:16,109 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 18:03:16,109 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 18:05:17,080 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
-2024-08-12 18:05:17,080 - mi_logger - INFO - https://uwh-ui-qa.azurewebsites.net
+2024-08-13 13:57:44,923 - mi_logger - INFO - <class 'list'>
+2024-08-13 13:57:44,923 - mi_logger - INFO - <class 'list'>
+2024-08-13 13:58:19,733 - mi_logger - INFO - <class 'dict'>
+2024-08-13 13:58:19,733 - mi_logger - INFO - <class 'dict'>
+2024-08-13 13:59:46,241 - mi_logger - INFO - <class 'method'>
+2024-08-13 13:59:46,241 - mi_logger - INFO - <class 'method'>
+2024-08-13 14:00:28,532 - mi_logger - INFO - <bound method Scheduling.appt_reasons of <custom_lib.schemas.types.Scheduling object at 0x106eafb90>>
+2024-08-13 14:00:28,532 - mi_logger - INFO - <bound method Scheduling.appt_reasons of <custom_lib.schemas.types.Scheduling object at 0x106eafb90>>
+2024-08-13 14:00:42,092 - mi_logger - INFO - {'$schema': 'http://json-schema.org/draft-07/schema#', 'title': 'Generated schema for Root', 'type': 'array', 'items': {'type': 'object', 'properties': {'paAppointmentReasonId': {'type': 'number'}, 'isNewPatient': {'type': 'boolean'}, 'appointmentReason': {'type': 'string'}, 'description': {'type': 'string'}, 'userExperience': {'type': 'string'}, 'ahAppointmentTypes': {'type': 'array', 'items': {'type': 'object', 'properties': {'ahAppointmentTypeId': {'type': 'number'}, 'appointmentTypeId': {'type': 'number'}, 'practiceId': {'type': 'number'}, 'name': {'type': 'string'}, 'shortname': {'type': 'string'}, 'isTelehealth': {'type': 'boolean'}}, 'required': ['ahAppointmentTypeId', 'appointmentTypeId', 'practiceId', 'name', 'shortname', 'isTelehealth']}}, 'patientBookingNote': {'type': 'string'}, 'paAppointmentTypeId': {'type': 'number'}}, 'required': ['paAppointmentReasonId', 'isNewPatient', 'appointmentReason', 'description', 'userExperience', 'ahAppointmentTypes', 'patientBookingNote', 'paAppointmentTypeId']}}
+2024-08-13 14:00:42,092 - mi_logger - INFO - {'$schema': 'http://json-schema.org/draft-07/schema#', 'title': 'Generated schema for Root', 'type': 'array', 'items': {'type': 'object', 'properties': {'paAppointmentReasonId': {'type': 'number'}, 'isNewPatient': {'type': 'boolean'}, 'appointmentReason': {'type': 'string'}, 'description': {'type': 'string'}, 'userExperience': {'type': 'string'}, 'ahAppointmentTypes': {'type': 'array', 'items': {'type': 'object', 'properties': {'ahAppointmentTypeId': {'type': 'number'}, 'appointmentTypeId': {'type': 'number'}, 'practiceId': {'type': 'number'}, 'name': {'type': 'string'}, 'shortname': {'type': 'string'}, 'isTelehealth': {'type': 'boolean'}}, 'required': ['ahAppointmentTypeId', 'appointmentTypeId', 'practiceId', 'name', 'shortname', 'isTelehealth']}}, 'patientBookingNote': {'type': 'string'}, 'paAppointmentTypeId': {'type': 'number'}}, 'required': ['paAppointmentReasonId', 'isNewPatient', 'appointmentReason', 'description', 'userExperience', 'ahAppointmentTypes', 'patientBookingNote', 'paAppointmentTypeId']}}
+2024-08-13 14:05:04,256 - mi_logger - INFO - Instance correctly validated
+2024-08-13 14:05:04,256 - mi_logger - INFO - Instance correctly validated

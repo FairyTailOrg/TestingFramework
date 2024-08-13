@@ -1,18 +1,17 @@
 # jsonschema_lib/validator.py
 
-from jsonschema import validate, ValidationError
-from .types import JsonSchema
+from jsonschema import ValidationError, validate
+
 from lib.logger_config import setup_logger
-import requests
+
 
 class SchemaValidator:
     def __init__(self) -> None:
         self.logger = setup_logger()
 
-    def validate(self, instance: dict, schema: JsonSchema):
-        schema_dict = schema.to_dict()
+    def validate(self, instance: dict, schema):
         try:
-            validate(instance=instance, schema=schema_dict)
+            validate(instance=instance, schema=schema)
             self.logger.info("Instance correctly validated")
         except ValidationError as e:
             self.logger.error("Error:", e.message)
