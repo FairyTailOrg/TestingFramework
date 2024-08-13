@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from custom_lib.web_lib import LoginPage
@@ -10,6 +12,8 @@ class BaseTestCase:
         self.page = page
         self.login = LoginPage(self.page)
         self.logger = setup_logger()
+        self.existent_patient_username =  os.getenv("EXISTENTPATIENT_USER")
+        self.existent_patient_password = os.getenv("EXISTENTPATIENT_PASSWORD")
 
     def navigate_to(self, url):
         self.page.goto(url)

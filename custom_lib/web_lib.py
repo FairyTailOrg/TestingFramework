@@ -35,10 +35,8 @@ class LoginPage:
         self.page.click(self.pom.athena_cred.login_button)
         self.page.click(self.pom.athena_cred.select_department)
 
-        if self.page.wait_for_url == "{url}/dashboard":
-            return True
-        return False
-
+        self.page.wait_for_url(f"{url}/dashboard")
+        return True
 
 
 

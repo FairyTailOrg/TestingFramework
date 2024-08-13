@@ -24,4 +24,4 @@ class AthenaCred:
         self.email_input = "//div/span/input[@id='okta-signin-username']"
         self.password_input = "//div/span/input[@id='okta-signin-password']"
         self.login_button = "//div/input[@id='okta-signin-submit']"
-        self.select_department = "//div[@class='patient-record-item picker']"
+        self.select_department = "//div[contains(text(), '(you)')]"

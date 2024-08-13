@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import pytest
@@ -40,12 +41,12 @@ def pytest_generate_tests(metafunc):
     if "browser" in metafunc.fixturenames and metafunc.config.getoption("browser") == "all":
         metafunc.parametrize("browser", range(len(metafunc.config._metadata["browsers"])))
 
-
 @pytest.fixture(scope="function")
-def page(browser):
+def page(browser, request):
     context = browser.new_context()
     page = context.new_page()
     yield page
+
     page.close()
     context.close()
 
