@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from custom_lib.schemas.types import Scheduling
+from custom_lib.schemas.types import Scheduling, Types
 from lib.api.api_lib import SchemaValidator
 from lib.logger_config import setup_logger
 

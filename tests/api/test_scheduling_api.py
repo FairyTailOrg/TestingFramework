@@ -11,4 +11,4 @@ class TestScheduling(BaseTestCase):
         response = requests.get(url + "/appointments/reasons")
         assert response.status_code == 200
         data = response.json()
-        assert self.api_lib.validate(data, self.scheduling.appt_reasons())
+        assert self.api_lib.validate(data, self.scheduling.appt_reasons)
