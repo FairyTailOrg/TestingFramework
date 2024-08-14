@@ -33,14 +33,9 @@ def browser_name(pytestconfig):
 def browsers(pytestconfig, playwright, browser_name):
     return [getattr(playwright, name).launch(headless=pytestconfig.getoption("headless")) for name in browser_name]
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def browser(browsers, request):
     return browsers[request.param] if hasattr(request, 'param') else browsers[0]
-
-@pytest.hookimpl(tryfirst=True)
-def pytest_generate_tests(metafunc):
-    if "browser" in metafunc.fixturenames and metafunc.config.getoption("browser") == "all":
-        metafunc.parametrize("browser", range(len(metafunc.config._metadata["browsers"])))
 
 @pytest.fixture(scope="function")
 def page(browser, request):
@@ -78,7 +73,6 @@ def pytest_runtest_makereport(item, call):
         attach(data=page.screenshot(path=screenshot_path))
         print(f"Screenshot saved to {screenshot_path}")
 
-# Este ejemplo asume que estás utilizando Playwright y que `page` es un fixture
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
     return {**browser_context_args, 'record_video_dir': create_screenshots_dir()}

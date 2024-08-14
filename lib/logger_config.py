@@ -11,7 +11,7 @@ def setup_logger(name='mi_logger', log_file='mi_aplicacion.log', level=logging.D
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.INFO)
 
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - [PID %(process)d]- %(name)s - %(levelname)s - %(message)s')
     console_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
 
