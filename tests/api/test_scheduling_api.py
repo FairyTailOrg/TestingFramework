@@ -1,9 +1,12 @@
+import pytest
 import requests
 
 from tests.api.basetestcase import BaseTestCase
 
 
 class TestScheduling(BaseTestCase):
+    @pytest.mark.smoke
+    @pytest.mark.api
     def test_appt_reasons(self):
         response = requests.get(self.url + "/appointments/reasons")
         assert response.status_code == 200
