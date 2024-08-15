@@ -1,3 +1,4 @@
+"""This file will contain all the web libraries used for project."""
 import os
 
 from playwright.sync_api import Page
@@ -7,18 +8,37 @@ from pages.pom import Pom
 
 
 class LoginPage:
+    """This class will contain all the types of login."""
+
     def __init__(self, page: Page):
+        """Initialize the playwright functions.
+
+        Args:
+            page (Page): page playwright function.
+        """
         self.page = page
         self.pom = Pom()
         self.logger = setup_logger()
 
     def go_to_landing_page(self, login_url: str):
-        """Navega a la página de inicio de sesión."""
+        """Receives the url and go to it.
+
+        Args:
+            login_url (str): url to be redirected.
+        """
         self.page.goto(login_url)
         self.page.wait_for_selector(self.pom.landingpage.lodus_icon_desktop)
 
     def login_existent_patient(self, username: str, password: str):
-        """Realiza el login con las credenciales proporcionadas."""
+        """Login as an existent patient flow.
+
+        Args:
+            username (str): user creds.
+            password (str): password creds.
+
+        Returns:
+            boolean: True if login was succesful.
+        """
         url = os.getenv("FRONTEND_URL")  # Get the url used.
         self.go_to_landing_page(url)
         self.page.click(self.pom.landingpage.login_button_desktop)

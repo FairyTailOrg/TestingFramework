@@ -7,7 +7,8 @@ dependencies:
   - pip:
     - pytest
     - flake8
-    - autopep8
+    - pycodestyle
+    - pep257
     - pytest-xdist
     - pytest-html
     - pytest-html-reporter

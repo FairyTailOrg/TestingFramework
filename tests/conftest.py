@@ -1,3 +1,4 @@
+"""Configuration file to configure the proper tests."""
 import os
 
 import pytest
@@ -9,18 +10,28 @@ from lib.logger_config import setup_logger
 
 
 @pytest.fixture(scope="session")
-def logger():
-    return setup_logger()
-
-
-@pytest.fixture(scope="session")
 def playwright():
+    """Initialize the playwright lib.
+
+    Yields:
+        _type_: _description_
+    """
     with sync_playwright() as p:
         yield p
 
 
 @pytest.fixture(scope="function")
 def browser(playwright, pytestconfig, browser_names):
+    """Browser instance from browser params.
+
+    Args:
+        playwright (_type_): playwright instance.
+        pytestconfig (_type_): pytest class.
+        browser_names (list): browser list.
+
+    Returns:
+        _type_: playwright.browser instance.
+    """
     logger = setup_logger()
     logger.info(f"Browser instanced: {browser_names}")
     return getattr(
@@ -29,6 +40,11 @@ def browser(playwright, pytestconfig, browser_names):
 
 
 def pytest_generate_tests(metafunc):
+    """Configure pytest test execution.
+
+    Args:
+        metafunc (_type_): pytest class.
+    """
     browser_list = ["chromium", "firefox", "webkit"]
     if ("browser_names" in metafunc.fixturenames and
             metafunc.config.getoption("browser") == "all"):
@@ -43,6 +59,7 @@ def pytest_generate_tests(metafunc):
 
 @pytest.fixture(scope="function")
 def page(browser):
+    """Page instance from playwright."""
     context = browser.new_context()
     page = context.new_page()
     yield page
@@ -52,6 +69,11 @@ def page(browser):
 
 
 def create_screenshots_dir():
+    """Screenshots path to save the screenshot taken when a test failes.
+
+    Returns:
+        str: screenshot path.
+    """
     screenshots_dir = 'results/screenshots'
     if not os.path.exists(screenshots_dir):
         os.makedirs(screenshots_dir)
@@ -60,6 +82,12 @@ def create_screenshots_dir():
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
+    """Configure the pytest report.
+
+    Args:
+        item (_type_): pytest class.
+        call (_type_): pytest class.
+    """
     outcome = yield
     report = outcome.get_result()
 
@@ -76,6 +104,14 @@ def pytest_runtest_makereport(item, call):
 
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
+    """To get the specific args for playwright browser.
+
+    Args:
+        browser_context_args (_type_): Browser args.
+
+    Returns:
+        _type_: screenshot file taken.
+    """
     return {
         **browser_context_args,
         'record_video_dir': create_screenshots_dir()
@@ -83,6 +119,11 @@ def browser_context_args(browser_context_args):
 
 
 def pytest_addoption(parser):
+    """Parameters in line.
+
+    Args:
+        parser (parser): method to get the command line args.
+    """
     parser.addoption(
         "--env",
         action="store",
@@ -105,6 +146,11 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="session", autouse=True)
 def load_env(pytestconfig):
+    """Get the env file and load it to use it in tests.
+
+    Args:
+        pytestconfig (pytestconfig): pytestconfiguration class.
+    """
     environment = pytestconfig.getoption("env")
 
     env_file = f"config/config_{environment}.env"

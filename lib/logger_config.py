@@ -1,7 +1,18 @@
+"""Logger to be used in the project."""
 import logging
 
 
 def setup_logger(name='framework log', log_file='framework_log.log', level=logging.DEBUG):  # noqa: E501
+    """Configure the logger to be used.
+
+    Args:
+        name (str, optional): Name of the logger. Defaults to 'framework log'.
+        log_file (str): Logger file path. Defaults to 'framework_log.log'.
+        level (_type_, optional): Log level to use. Defaults to logging.DEBUG.
+
+    Returns:
+        _type_: _description_
+    """
     logger = logging.getLogger(name)
     logger.setLevel(level)
 
