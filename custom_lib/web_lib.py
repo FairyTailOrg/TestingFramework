@@ -17,7 +17,7 @@ class LoginPage:
         self.page.goto(login_url)
         self.page.wait_for_selector(self.pom.landingpage.lodus_icon_desktop)
 
-    def login(self, username: str, password: str):
+    def login_existent_patient(self, username: str, password: str):
         """Realiza el login con las credenciales proporcionadas."""
         url = os.getenv("FRONTEND_URL")  # Get the url used.
         self.go_to_landing_page(url)

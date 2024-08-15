@@ -19,26 +19,24 @@ def playwright():
     with sync_playwright() as p:
         yield p
 
-@pytest.fixture(scope="session")
-def browser_name(pytestconfig):
-    browser_option = pytestconfig.getoption("browser").lower()
-    if browser_option == "all":
-        return ["chromium", "firefox", "webkit"]
-    elif browser_option in ["chromium", "firefox", "webkit"]:
-        return [browser_option]
-    else:
-        raise ValueError(f"Unsupported browser option: {browser_option}")
-    
-@pytest.fixture(scope="session")
-def browsers(pytestconfig, playwright, browser_name):
-    return [getattr(playwright, name).launch(headless=pytestconfig.getoption("headless")) for name in browser_name]
-
-@pytest.fixture(scope="session")
-def browser(browsers, request):
-    return browsers[request.param] if hasattr(request, 'param') else browsers[0]
 
 @pytest.fixture(scope="function")
-def page(browser, request):
+def browser(playwright, pytestconfig, browser_names):
+    logger = setup_logger()
+    logger.info(f"Browser instanced: {browser_names}")
+    return getattr(playwright, browser_names).launch(headless=pytestconfig.getoption("headless"))
+
+def pytest_generate_tests(metafunc):
+    if "browser_names" in metafunc.fixturenames and metafunc.config.getoption("browser") == "all":
+        metafunc.parametrize("browser_names", ["chromium", "firefox", "webkit"])
+    elif "browser_names" in metafunc.fixturenames and metafunc.config.getoption("browser") in ["chromium", "firefox", "webkit"]:
+        metafunc.parametrize("browser_names", [metafunc.config.getoption("browser")])
+    else:
+        raise ValueError(f"Unsupported browser option: {metafunc.config.getoption(metafunc.config.getoption('browser'))}")
+    
+
+@pytest.fixture(scope="function")
+def page(browser):
     context = browser.new_context()
     page = context.new_page()
     yield page
@@ -73,6 +71,7 @@ def pytest_runtest_makereport(item, call):
         attach(data=page.screenshot(path=screenshot_path))
         print(f"Screenshot saved to {screenshot_path}")
 
+# Este ejemplo asume que estás utilizando Playwright y que `page` es un fixture
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
     return {**browser_context_args, 'record_video_dir': create_screenshots_dir()}
