@@ -1,0 +1,56 @@
+name: Smoke API Tests
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Runs at 1:00 PM UTC every day (7:00 AM CST during Standard Time)
+    - cron: '0 13 * * *'
+jobs:
+  create-env:
+    name: ${{ matrix.os }} 
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -l {0}
+        
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        
+    steps:
+      - name: Checkout repository.
+        uses: actions/checkout@v4
+
+      - name: create conda environment.
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          mamba-version: "*"
+          channels: conda-forge,bioconda,defaults
+          auto-activate-base: false
+          activate-environment: testing-framework
+          environment-file: testing_framework.yaml
+
+      - name: Install playwright dependencies.
+        run: |
+          playwright install
+
+      - name: Get env variables from secrets.
+        run: |
+          echo ${{ secrets.config_qa }} > config_qa.env
+        
+      - name: Execute Smoke Tests.
+        run: |
+          pytest -v tests --headless -m smoke
+        continue-on-error: false
+      
+      - name: Remove the config file.
+        run: |  
+          rm -f config/config_qa.env
+
+      - name: Save artifacts.
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-results
+          path: results
