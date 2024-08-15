@@ -10,6 +10,7 @@ from lib.logger_config import setup_logger
 class BaseTestCase:
     @pytest.fixture(autouse=True)
     def setup(self):
+        self.url = os.getenv("SCHEDULING_URL")
         self.scheduling = Scheduling()
         self.logger = setup_logger()
         self.api_lib = SchemaValidator()

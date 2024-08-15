@@ -31,8 +31,7 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize("browser_names", ["chromium", "firefox", "webkit"])
     elif "browser_names" in metafunc.fixturenames and metafunc.config.getoption("browser") in ["chromium", "firefox", "webkit"]:
         metafunc.parametrize("browser_names", [metafunc.config.getoption("browser")])
-    else:
-        raise ValueError(f"Unsupported browser option: {metafunc.config.getoption(metafunc.config.getoption('browser'))}")
+
     
 
 @pytest.fixture(scope="function")
