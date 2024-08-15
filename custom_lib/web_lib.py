@@ -11,7 +11,7 @@ class LoginPage:
         self.page = page
         self.pom = Pom()
         self.logger = setup_logger()
-        
+
     def go_to_landing_page(self, login_url: str):
         """Navega a la página de inicio de sesión."""
         self.page.goto(login_url)
@@ -36,7 +36,3 @@ class LoginPage:
 
         self.page.wait_for_url(f"{url}/dashboard")
         return True
-
-
-
-

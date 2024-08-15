@@ -1,7 +1,7 @@
 import logging
 
 
-def setup_logger(name='mi_logger', log_file='mi_aplicacion.log', level=logging.DEBUG):
+def setup_logger(name='framework log', log_file='framework_log.log', level=logging.DEBUG):  # noqa: E501
     logger = logging.getLogger(name)
     logger.setLevel(level)
 
@@ -11,7 +11,7 @@ def setup_logger(name='mi_logger', log_file='mi_aplicacion.log', level=logging.D
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.INFO)
 
-    formatter = logging.Formatter('%(asctime)s - [PID %(process)d]- %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - [PID %(process)d]- %(name)s - %(levelname)s - %(message)s')  # noqa: E501
     console_handler.setFormatter(formatter)
     file_handler.setFormatter(formatter)
 

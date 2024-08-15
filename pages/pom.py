@@ -6,4 +6,3 @@ class Pom:
         self.landingpage = LandingPage()
         self.login_modal = LoginModal()
         self.athena_cred = AthenaCred()
-

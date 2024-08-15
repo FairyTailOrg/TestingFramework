@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 
+
 class Browser:
     def __init__(self, browser_type='chromium'):
         self.browser_type = browser_type

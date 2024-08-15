@@ -17,4 +17,3 @@ class SchemaValidator:
             self.logger.error("Error:", e.message)
             return False
         return True
-    

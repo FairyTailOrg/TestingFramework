@@ -1,10 +1,3 @@
-# pages/login_page.py
-
-from playwright.sync_api import Page
-from selenium.webdriver.common.by import By
-
-from .base_page import BasePage
-
 
 class LandingPage:
     def __init__(self):
@@ -13,11 +6,13 @@ class LandingPage:
         self.login_button_mobile = '(//*[@id="login_button"])[1]'
         self.login_button_desktop = '(//*[@id="login_button"])[2]'
 
+
 class LoginModal:
     def __init__(self):
         self.accept_terms_of_use = "//div/span/input"
         self.login_button = "//div/button[contains(text(), 'Log in with')]"
-        self.create_account_button = '/html/body//div/a[contains(text(), "Create Account")]'
+        self.create_account_button = '/html/body//div/a[contains(text(), "Create Account")]'  # noqa: E501
+
 
 class AthenaCred:
     def __init__(self):
