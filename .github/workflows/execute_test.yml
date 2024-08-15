@@ -47,7 +47,17 @@ jobs:
 
       - name: Get env variables from secrets according to your selection
         run: |
-          echo ${{ secrets.CONFIG_${{ github.event.inputs.environment }} }} > config/config_${{ github.event.inputs.environment }}.env
+          if [ "${{ github.event.inputs.environment }}" == "qa" ]; then
+            CONFIG_FILE=CONFIG_QA
+          elif [ "${{ github.event.inputs.environment }}" == "dev" ]; then
+            CONFIG_FILE=CONFIG_DEMO
+          elif [ "${{ github.event.inputs.environment }}" == "prd" ]; then
+            CONFIG_FILE=CONFIG_PRD
+          else
+            CONFIG_FILE="config_qa.env"
+          fi
+          echo ${CONFIG_FILE} > config_"${{ github.event.inputs.environment }}".env
+
         
       - name: Execute Smoke Tests.
         run: |
