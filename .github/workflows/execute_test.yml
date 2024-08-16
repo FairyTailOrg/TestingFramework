@@ -52,6 +52,10 @@ jobs:
       - name: Install Playwright browsers
         run: |
           playwright install
+
+      - name: Install Playwright webkit dependencies.
+        run: |
+            sudo playwright install-deps webkit
   
       - name: Get env variables from secrets.
         run: |
