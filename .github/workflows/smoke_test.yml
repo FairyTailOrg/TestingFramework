@@ -37,8 +37,9 @@ jobs:
             export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
             echo $PYTHONPATH
 
-      - name: Install Playwright browsers
-        uses: microsoft/playwright-github-action@v1
+      - name: Install playwright dependencies.
+        run: |
+            sudo playwright install-deps
 
       - name: Get env variables from secrets.
         run: |
@@ -47,6 +48,7 @@ jobs:
       - name: Create config_qa.env file
         run: |
           echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_qa.env
+
 
       - name: Execute Smoke Tests.
         run: |
