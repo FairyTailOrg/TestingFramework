@@ -10,6 +10,7 @@ dependencies:
     - pep257
     - pytest-xdist
     - pytest-html
+    - pytest-html-reporter
     - pytest-json
     - pytest-env
     - playwright
