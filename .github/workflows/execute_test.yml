@@ -51,7 +51,7 @@ jobs:
   
       - name: Install Playwright browsers
         run: |
-          playwright install
+          playwright install-deps
   
       - name: Get env variables from secrets.
         run: |
