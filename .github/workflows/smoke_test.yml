@@ -44,7 +44,14 @@ jobs:
       - name: Get env variables from secrets.
         run: |
           mkdir config
+
+      - name: Get env variables from secrets.
+        run: |
           echo ${{ secrets.CONFIG_QA }} > config/config_qa.env
+
+
+      - name: Get env variables from secrets.
+        run: |
           cat config/config_qa.env
         
       - name: Execute Smoke Tests.
