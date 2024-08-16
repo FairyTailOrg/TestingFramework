@@ -38,6 +38,15 @@ def browser(playwright, pytestconfig, browser_names):
         playwright,
         browser_names).launch(headless=pytestconfig.getoption("headless"))
 
+@pytest.fixture(scope="session")
+def browser_names(request):
+    """Browser names from pytest command line.
+    Args:
+    request (_type_): pytest request object.
+    Returns:
+    _type_: browser names list.
+    """
+    return request.param
 
 def pytest_generate_tests(metafunc):
     """Configure pytest test execution.
