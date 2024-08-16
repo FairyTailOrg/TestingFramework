@@ -47,6 +47,7 @@ jobs:
 
       - name: Get env variables from secrets.
         run: |
+          touch config/config_qa.env
           echo ${{ secrets.CONFIG_QA }} > config/config_qa.env
 
       - name: Get env variables from secrets.
