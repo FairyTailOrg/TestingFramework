@@ -3,16 +3,16 @@ on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'Path or file to be executed. If you want to run all just use .'
-        default: '.'
+        description: 'Path or file to be executed. If you want to run all just use /'
+        default: '/'
         required: true
       environment:
         default: 'qa'
         description: 'Environment to execute the flow.'
         required: false
-      tags:
+      marks:
         default: ''
-        description: 'Tags to execute the specific set of test cases. -i for include -e to exclude.'
+        description: 'Marks to execute the specific set of test cases.'
         required: false
 jobs:
   create-env:
@@ -42,29 +42,36 @@ jobs:
 
       - name: Export Python Path.
         run: |
-          export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
+            export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
+            echo $PYTHONPATH
   
-      - name: Install playwright.
+      - name: Install Playwright browsers
         run: |
           playwright install
+  
+      - name: Get env variables from secrets.
+        run: |
+            mkdir config
+  
+      - name: Create config_qa.env file
+        run: |
+          echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_qa.env
 
       - name: Get env variables from secrets according to your selection
         run: |
           if [ "${{ github.event.inputs.environment }}" == "qa" ]; then
-            CONFIG_FILE=CONFIG_QA
+            echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_qa.env
           elif [ "${{ github.event.inputs.environment }}" == "dev" ]; then
-            CONFIG_FILE=CONFIG_DEMO
+            echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_dev.env
           elif [ "${{ github.event.inputs.environment }}" == "prd" ]; then
-            CONFIG_FILE=CONFIG_PRD
+            echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_prd.env
           else
-            CONFIG_FILE="config_qa.env"
+            echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_qa.env
           fi
-          echo ${CONFIG_FILE} > config_"${{ github.event.inputs.environment }}".env
-
         
       - name: Execute Smoke Tests.
         run: |
-          pytest -v tests --headless -m smoke --env=${{ github.event.inputs.environment }}
+          pytest -v tests${{ github.event.inputs.path }} --headless -m ${{ github.event.inputs.marks }} --env=${{ github.event.inputs.environment }}
         continue-on-error: false
       
       - name: Remove the config file.
