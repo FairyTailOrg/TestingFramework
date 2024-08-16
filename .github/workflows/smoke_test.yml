@@ -49,10 +49,9 @@ jobs:
         run: |
           echo ${{ secrets.CONFIG_QA }} > config/config_qa.env
 
-
       - name: Get env variables from secrets.
         run: |
-          cat config/config_qa.env
+          ls -ltr
         
       - name: Execute Smoke Tests.
         run: |
