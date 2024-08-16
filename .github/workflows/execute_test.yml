@@ -40,11 +40,10 @@ jobs:
           activate-environment: testing-framework
           environment-file: testing_framework.yml
 
-      - name: Install playwright.
+      - name: Install check conda list.
         run: |
-          echo $conda env list
+          echo conda env list
   
-      
       - name: Install playwright.
         run: |
           playwright install
