@@ -51,6 +51,7 @@ jobs:
 
       - name: Get env variables from secrets.
         run: |
+          cd config
           ls -ltr
         
       - name: Execute Smoke Tests.
