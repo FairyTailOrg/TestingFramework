@@ -45,11 +45,10 @@ jobs:
         run: |
           mkdir config
 
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_SECRET_KEY: ${{ secrets.CONFIG_QA }}
-          file_name: config/config_qa.env
+      - name: Get env variables from secrets.
+        run: |
+          touch config/config_qa.env
+          echo ${{ secrets.CONFIG_QA }} >> config/config_qa.env
 
       - name: Execute Smoke Tests.
         run: |
