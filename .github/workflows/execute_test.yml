@@ -10,6 +10,10 @@ on:
         default: 'qa'
         description: 'Environment to execute the flow.'
         required: false
+      browser:
+          default: 'chromium'
+          description: 'browser to execute the flow. You can use all to parametrize the 3 browsers.'
+          required: false
       marks:
         default: ''
         description: 'Marks to execute the specific set of test cases.'
@@ -71,7 +75,7 @@ jobs:
         
       - name: Execute Smoke Tests.
         run: |
-          pytest -v tests${{ github.event.inputs.path }} --headless -m ${{ github.event.inputs.marks }} --env=${{ github.event.inputs.environment }}
+          pytest -v tests${{ github.event.inputs.path }} --headless -m ${{ github.event.inputs.marks }} --env=${{ github.event.inputs.environment }}  --browser=
         continue-on-error: false
       
       - name: Remove the config file.
