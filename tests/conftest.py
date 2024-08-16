@@ -4,9 +4,11 @@ import os
 import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
-from pytest_html_reporter import attach
 
 from lib.logger_config import setup_logger
+
+#from pytest_html_reporter import attach
+
 
 
 @pytest.fixture(scope="session")
