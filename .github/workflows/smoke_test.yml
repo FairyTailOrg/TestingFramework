@@ -38,7 +38,8 @@ jobs:
             echo $PYTHONPATH
 
       - name: Install Playwright browsers
-        uses: microsoft/playwright-github-action@v1
+        run: |
+            playwright install
 
       - name: Get env variables from secrets.
         run: |
