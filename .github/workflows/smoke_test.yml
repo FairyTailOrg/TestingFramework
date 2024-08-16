@@ -43,6 +43,7 @@ jobs:
 
       - name: Get env variables from secrets.
         run: |
+          pwd
           mkdir config
           echo ${{ secrets.CONFIG_QA }} > config/config_qa.env
         
