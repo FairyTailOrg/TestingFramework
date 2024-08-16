@@ -75,7 +75,7 @@ jobs:
         
       - name: Execute Smoke Tests.
         run: |
-          pytest -v tests${{ github.event.inputs.path }} --headless -m ${{ github.event.inputs.marks }} --env=${{ github.event.inputs.environment }}  --browser=
+          pytest -v tests${{ github.event.inputs.path }} --headless -m ${{ github.event.inputs.marks }} --env=${{ github.event.inputs.environment }}  --browser=${{ github.event.inputs.browser }}
         continue-on-error: false
       
       - name: Remove the config file.
