@@ -15,7 +15,7 @@ on:
           description: 'browser to execute the flow. You can use all to parametrize the 3 browsers.'
           required: false
       marks:
-        default: ''
+        default: 'smoke'
         description: 'Marks to execute the specific set of test cases.'
         required: false
 jobs:
