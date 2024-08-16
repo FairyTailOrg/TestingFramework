@@ -51,7 +51,7 @@ jobs:
           mv config/config_qa.txt config/config_qa.env
   
       - name: Display config_qa.env
-        run: cat config_qa.env
+        run: cat config/config_qa.env
 
       - name: Execute Smoke Tests.
         run: |
