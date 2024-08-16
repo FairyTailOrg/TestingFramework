@@ -46,10 +46,10 @@ def pytest_generate_tests(metafunc):
         metafunc (_type_): pytest class.
     """
     browser_list = ["chromium", "firefox", "webkit"]
-    if ("browser_names" in metafunc.fixturenames and
+    if ("browser" in metafunc.fixturenames and
             metafunc.config.getoption("browser") == "all"):
         metafunc.parametrize("browser_names", browser_list)
-    elif ("browser_names" in metafunc.fixturenames and
+    elif ("browser" in metafunc.fixturenames and
             metafunc.config.getoption("browser") in browser_list):
         metafunc.parametrize(
             "browser_names",
