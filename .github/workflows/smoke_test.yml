@@ -35,6 +35,7 @@ jobs:
       - name: Export Python Path.
         run: |
             export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
+            echo $PYTHONPATH
 
       - name: Install playwright dependencies.
         run: |

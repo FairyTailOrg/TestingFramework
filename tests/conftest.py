@@ -68,54 +68,54 @@ def page(browser):
     context.close()
 
 
-def create_screenshots_dir():
-    """Screenshots path to save the screenshot taken when a test failes.
+# def create_screenshots_dir():
+#     """Screenshots path to save the screenshot taken when a test failes.
 
-    Returns:
-        str: screenshot path.
-    """
-    screenshots_dir = 'results/screenshots'
-    if not os.path.exists(screenshots_dir):
-        os.makedirs(screenshots_dir)
-    return screenshots_dir
-
-
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
-    """Configure the pytest report.
-
-    Args:
-        item (_type_): pytest class.
-        call (_type_): pytest class.
-    """
-    outcome = yield
-    report = outcome.get_result()
-
-    if report.when == 'call' and report.failed:
-        screenshots_dir = create_screenshots_dir()
-
-        page = item.funcargs['page']
-
-        screenshot_path = os.path.join(screenshots_dir, f"{item.name}.png")
-        page.screenshot(path=screenshot_path)
-        attach(data=page.screenshot(path=screenshot_path))
-        print(f"Screenshot saved to {screenshot_path}")
+#     Returns:
+#         str: screenshot path.
+#     """
+#     screenshots_dir = 'results/screenshots'
+#     if not os.path.exists(screenshots_dir):
+#         os.makedirs(screenshots_dir)
+#     return screenshots_dir
 
 
-@pytest.fixture(scope="session")
-def browser_context_args(browser_context_args):
-    """To get the specific args for playwright browser.
+# @pytest.hookimpl(tryfirst=True, hookwrapper=True)
+# def pytest_runtest_makereport(item, call):
+#     """Configure the pytest report.
 
-    Args:
-        browser_context_args (_type_): Browser args.
+#     Args:
+#         item (_type_): pytest class.
+#         call (_type_): pytest class.
+#     """
+#     outcome = yield
+#     report = outcome.get_result()
 
-    Returns:
-        _type_: screenshot file taken.
-    """
-    return {
-        **browser_context_args,
-        'record_video_dir': create_screenshots_dir()
-        }
+#     if report.when == 'call' and report.failed:
+#         screenshots_dir = create_screenshots_dir()
+
+#         page = item.funcargs['page']
+
+#         screenshot_path = os.path.join(screenshots_dir, f"{item.name}.png")
+#         page.screenshot(path=screenshot_path)
+#         attach(data=page.screenshot(path=screenshot_path))
+#         print(f"Screenshot saved to {screenshot_path}")
+
+
+# @pytest.fixture(scope="session")
+# def browser_context_args(browser_context_args):
+#     """To get the specific args for playwright browser.
+
+#     Args:
+#         browser_context_args (_type_): Browser args.
+
+#     Returns:
+#         _type_: screenshot file taken.
+#     """
+#     return {
+#         **browser_context_args,
+#         'record_video_dir': create_screenshots_dir()
+#         }
 
 
 def pytest_addoption(parser):
