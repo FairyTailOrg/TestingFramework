@@ -40,14 +40,13 @@ jobs:
           activate-environment: testing-framework
           environment-file: testing_framework.yml
 
-      - name: Install check conda list.
+      - name: Export Python Path.
         run: |
-          echo conda env list
+          export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
   
       - name: Install playwright.
         run: |
           playwright install
-
 
       - name: Get env variables from secrets according to your selection
         run: |
