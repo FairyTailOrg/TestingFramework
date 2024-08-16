@@ -52,7 +52,7 @@ jobs:
       - name: Get env variables from secrets.
         run: |
           cd config
-          ls -ltr
+          cat config_qa.env
         
       - name: Execute Smoke Tests.
         run: |
