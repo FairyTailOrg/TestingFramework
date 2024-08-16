@@ -39,6 +39,11 @@ jobs:
           auto-activate-base: false
           activate-environment: testing-framework
           environment-file: testing_framework.yml
+
+      - name: Install playwright.
+        run: |
+          echo $conda env list
+  
       
       - name: Install playwright.
         run: |
