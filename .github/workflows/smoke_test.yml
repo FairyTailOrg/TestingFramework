@@ -34,7 +34,7 @@ jobs:
 
       - name: Install check conda list.
         run: |
-          echo conda env list
+          conda env list
 
       - name: Install playwright dependencies.
         run: |
