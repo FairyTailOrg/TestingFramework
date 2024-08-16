@@ -47,7 +47,8 @@ jobs:
 
       - name: Create config_qa.env file
         run: |
-          echo "${{ secrets.QA_CONFIG }}" >> config_qa.env
+          echo "${{ secrets.QA_CONFIG }}" > config/config_qa.txt
+          mv config/config_qa.txt config/config_qa.env
   
       - name: Display config_qa.env
         run: cat config_qa.env
