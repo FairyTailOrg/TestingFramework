@@ -51,7 +51,7 @@ jobs:
   
       - name: Install Playwright browsers
         run: |
-          playwright install-deps
+          playwright install
   
       - name: Get env variables from secrets.
         run: |
@@ -66,9 +66,9 @@ jobs:
           if [ "${{ github.event.inputs.environment }}" == "qa" ]; then
             echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_qa.env
           elif [ "${{ github.event.inputs.environment }}" == "dev" ]; then
-            echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_dev.env
+            echo "${{ secrets.CONFIG_DEV }}" | base64 --decode > config/config_dev.env
           elif [ "${{ github.event.inputs.environment }}" == "prd" ]; then
-            echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_prd.env
+            echo "${{ secrets.CONFIG_PRD }}" | base64 --decode > config/config_prd.env
           else
             echo "${{ secrets.CONFIG_QA }}" | base64 --decode > config/config_qa.env
           fi
