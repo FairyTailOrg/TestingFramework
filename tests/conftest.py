@@ -34,9 +34,12 @@ def browser(playwright, pytestconfig, browser_names):
     """
     logger = setup_logger()
     logger.info(f"Browser instanced: {browser_names}")
-    return getattr(
+    browser = getattr(
         playwright,
-        browser_names).launch(headless=pytestconfig.getoption("headless"))
+        browser_names
+        ).launch(headless=pytestconfig.getoption("headless"))
+    yield browser
+    browser.close()
 
 
 def pytest_generate_tests(metafunc):
