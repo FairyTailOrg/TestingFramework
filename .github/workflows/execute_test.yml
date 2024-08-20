@@ -1,4 +1,4 @@
-name: Execute automation test cases manually
+name: Execute test cases.
 on:
   workflow_dispatch:
     inputs:
