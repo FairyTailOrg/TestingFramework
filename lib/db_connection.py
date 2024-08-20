@@ -7,7 +7,7 @@ class DbConnection:
 
     def __init__(self, user, password, dbname, host, port) -> None:
         """Process parameters.
-        
+
         Args:
             user (string): user to access to dB.
             password (string): password to access to dB.
@@ -20,13 +20,18 @@ class DbConnection:
         self.dbname = dbname
         self.host = host
         self.port = port
-    
+
     def connect_to_db(self):
-            """Connect to database. 2 instances are needed because mngr and db."""
-            # Connection for db 
-            self.conn  = pymssql.connect(server=self.host, user=self.user, password=self.password, database=self.dbname, port=1433)
-            self.cursor = self.conn.cursor(as_dict=True)
-        
+        """Connect to database. 2 instances are needed because mngr and db."""
+        self.conn = pymssql.connect(
+            server=self.host,
+            user=self.user,
+            password=self.password,
+            database=self.dbname,
+            port=1433
+            )
+        self.cursor = self.conn.cursor(as_dict=True)
+
     def close_db(self):
         """Close db connections."""
         self.cursor.close()

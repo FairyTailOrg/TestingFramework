@@ -56,6 +56,7 @@ def pytest_generate_tests(metafunc):
             [metafunc.config.getoption("browser")]
             )
 
+
 @pytest.fixture(scope="function")
 def page(browser):
     """Page instance from playwright."""
