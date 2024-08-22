@@ -5,7 +5,7 @@ import pytest
 
 from custom_lib.schemas.types import Scheduling
 from lib.api.api_lib import SchemaValidator
-from lib.logger_config import setup_logger
+from lib.logger_config import logger
 
 
 class BaseTestCase:
@@ -16,5 +16,5 @@ class BaseTestCase:
         """Initialize of the api tests."""
         self.url = os.getenv("SCHEDULING_URL")
         self.scheduling = Scheduling()
-        self.logger = setup_logger()
+        self.logger = logger
         self.api_lib = SchemaValidator()

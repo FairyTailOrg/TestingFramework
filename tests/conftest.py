@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 from pytest_html_reporter import attach
 
-from lib.logger_config import setup_logger
+from lib.logger_config import logger
 
 
 @pytest.fixture(scope="session")
@@ -19,9 +19,12 @@ def playwright():
     with sync_playwright() as p:
         yield p
 
+@pytest.fixture
+def log():
+    return logger
 
 @pytest.fixture(scope="function")
-def browser(playwright, pytestconfig, browser_names):
+def browser(playwright, pytestconfig, browser_names, log):
     """Browser instance from browser params.
 
     Args:
@@ -32,8 +35,7 @@ def browser(playwright, pytestconfig, browser_names):
     Returns:
         _type_: playwright.browser instance.
     """
-    logger = setup_logger()
-    logger.info(f"Browser instanced: {browser_names}")
+    log.info(f"Browser instanced: {browser_names}")
     browser = getattr(
         playwright,
         browser_names

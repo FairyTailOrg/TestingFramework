@@ -1,7 +1,7 @@
 """File with all the generic api libraries."""
 from jsonschema import ValidationError, validate
 
-from lib.logger_config import setup_logger
+from lib.logger_config import logger
 
 
 class SchemaValidator:
@@ -9,7 +9,7 @@ class SchemaValidator:
 
     def __init__(self) -> None:
         """Initialize the useful methods or class."""
-        self.logger = setup_logger()
+        self.logger = logger
 
     def validate(self, instance: dict, schema):
         """Validate the response or dict vs the json schema specified.

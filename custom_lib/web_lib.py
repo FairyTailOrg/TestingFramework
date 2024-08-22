@@ -3,7 +3,7 @@ import os
 
 from playwright.sync_api import Page
 
-from lib.logger_config import setup_logger
+from lib.logger_config import logger
 from pages.pom import Pom
 
 
@@ -18,7 +18,7 @@ class LoginPage:
         """
         self.page = page
         self.pom = Pom()
-        self.logger = setup_logger()
+        self.logger = logger
 
     def go_to_landing_page(self, login_url: str):
         """Receives the url and go to it.

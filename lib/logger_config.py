@@ -30,3 +30,5 @@ def setup_logger(name='framework log', log_file='framework_log.log', level=loggi
     logger.addHandler(file_handler)
 
     return logger
+
+logger = setup_logger()
