@@ -1,5 +1,6 @@
 """This file will contain all the web libraries used for project."""
 import os
+import re
 
 from playwright.sync_api import Page
 
@@ -20,16 +21,16 @@ class LoginPage:
         self.pom = Pom()
         self.logger = logger
 
-    def go_to_landing_page(self, login_url: str):
+    def go_to_home_page(self, login_url: str):
         """Receives the url and go to it.
 
         Args:
             login_url (str): url to be redirected.
         """
         self.page.goto(login_url)
-        self.page.wait_for_selector(self.pom.landingpage.lodus_icon_desktop)
+        self.page.wait_for_selector(self.pom.home.logo_desktop)
 
-    def login_existent_patient(self, username: str, password: str):
+    def login(self, username: str, password: str):
         """Login as an existent patient flow.
 
         Args:
@@ -40,19 +41,35 @@ class LoginPage:
             boolean: True if login was succesful.
         """
         url = os.getenv("FRONTEND_URL")  # Get the url used.
-        self.go_to_landing_page(url)
-        self.page.click(self.pom.landingpage.login_button_desktop)
-        try:
-            self.page.click(self.pom.login_modal.accept_terms_of_use)
-        except Exception as e:
-            self.logger.error(f"Error al aceptar los términos de uso: {e}")
+        self.go_to_home_page(url)
+
+        user_button = self.page.locator(self.pom.home.sign_in)
+        if "Sign In" not in user_button.text_content():
+            raise ValueError("Not available to login.")
+        user_button.click()
+
+        self.page.fill(self.pom.login_modal.username, username)
+        self.page.fill(self.pom.login_modal.password, password)
+
         self.page.click(self.pom.login_modal.login_button)
 
-        self.page.wait_for_selector(self.pom.athena_cred.email_input)
-        self.page.fill(self.pom.athena_cred.email_input, username)
-        self.page.fill(self.pom.athena_cred.password_input, password)
-        self.page.click(self.pom.athena_cred.login_button)
-        self.page.click(self.pom.athena_cred.select_department)
-
-        self.page.wait_for_url(f"{url}/dashboard")
+        self.page.wait_for_selector(
+            self.pom.login_modal.login_button,
+            state="detached"
+            )
+        self.page.wait_for_selector(self.pom.login_modal.loading_icon)
+        self.page.wait_for_selector(
+            self.pom.login_modal.loading_icon,
+            state="detached"
+            )
+        self.page.wait_for_url(f"{url}")
+        final_user = self.page.locator(self.pom.home.sign_in)
+        show_user = final_user.text_content()
+        if "Sign In" in show_user:
+            return False
+        show_user = show_user.replace("\n", "")
+        show_user = show_user.replace("\t", "")
+        show_user = show_user.replace(" ", "")
+        show_user = re.sub(r'([a-z])([A-Z])', r'\1 \2', show_user)
+        self.logger.info(f"User logged: {show_user}")
         return True

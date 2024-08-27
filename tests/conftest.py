@@ -19,9 +19,16 @@ def playwright():
     with sync_playwright() as p:
         yield p
 
+
 @pytest.fixture
 def log():
+    """Instance of logger.
+
+    Returns:
+        logger: logger instanced and initialized.
+    """
     return logger
+
 
 @pytest.fixture(scope="function")
 def browser(playwright, pytestconfig, browser_names, log):

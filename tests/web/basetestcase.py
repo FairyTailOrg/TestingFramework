@@ -16,5 +16,5 @@ class BaseTestCase:
         self.page = page
         self.login = LoginPage(self.page)
         self.logger = logger
-        self.existent_patient_username = os.getenv("EXISTENTPATIENT_USER")
-        self.existent_patient_password = os.getenv("EXISTENTPATIENT_PASSWORD")
+        self.existent_patient_username = os.getenv("QAUSER")
+        self.existent_patient_password = os.getenv("QAPASSWORD")
