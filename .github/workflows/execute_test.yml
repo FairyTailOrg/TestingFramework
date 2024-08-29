@@ -62,6 +62,7 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.browser }}" == "all" || "${{ github.event.inputs.browser }}" == "webkit"]; then
             playwright install-deps webkit
+          fi
   
       - name: Get env variables from secrets.
         run: |
