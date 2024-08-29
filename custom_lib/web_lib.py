@@ -8,7 +8,7 @@ from lib.logger_config import logger
 from pages.pom import Pom
 
 
-class LoginPage:
+class HomePage:
     """This class will contain all the types of login."""
 
     def __init__(self, page: Page):
@@ -20,6 +20,7 @@ class LoginPage:
         self.page = page
         self.pom = Pom()
         self.logger = logger
+        self.url = os.getenv("FRONTEND_URL")
 
     def go_to_home_page(self, login_url: str):
         """Receives the url and go to it.
@@ -40,8 +41,7 @@ class LoginPage:
         Returns:
             boolean: True if login was succesful.
         """
-        url = os.getenv("FRONTEND_URL")  # Get the url used.
-        self.go_to_home_page(url)
+        self.go_to_home_page(self.url)
 
         user_button = self.page.locator(self.pom.home.sign_in)
         if "Sign In" not in user_button.text_content():
@@ -73,3 +73,9 @@ class LoginPage:
         show_user = re.sub(r'([a-z])([A-Z])', r'\1 \2', show_user)
         self.logger.info(f"User logged: {show_user}")
         return True
+
+    def check_utility_headers(self):
+        """Check if utility headers are available."""
+        self.go_to_home_page(self.url)
+        headers = self.page.locator(self.pom.home.nav_bar+"/a")
+        return headers.all_inner_texts()
