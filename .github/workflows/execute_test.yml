@@ -49,12 +49,18 @@ jobs:
             export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
             echo $PYTHONPATH
   
-      - name: Install Playwright browsers
+      - name: Install Playwright webkit dependencies.
         run: |
-          playwright install
+            if [ "${{ github.event.inputs.browser }}" == "all" ]; then
+              echo "BROWSER=" >> $GITHUB_ENV
+            else
+              echo  "BROWSER=${{ github.event.inputs.browser }}" >> $GITHUB_ENV
+            fi
+              playwright install $BROWSER
 
       - name: Install Playwright webkit dependencies.
         run: |
+          if [ "${{ github.event.inputs.browser }}" == "all" || "${{ github.event.inputs.browser }}" == "webkit"]; then
             playwright install-deps webkit
   
       - name: Get env variables from secrets.

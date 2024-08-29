@@ -39,7 +39,7 @@ jobs:
 
       - name: Install Playwright browsers
         run: |
-            playwright install firefox
+            playwright install chromium
 
       - name: Get env variables from secrets.
         run: |
@@ -52,7 +52,7 @@ jobs:
 
       - name: Execute Smoke Tests.
         run: |
-          pytest -v tests --headless -m smoke --browser=firefox
+          pytest -v tests --headless -m smoke
         continue-on-error: false
       
       - name: Remove the config file.
