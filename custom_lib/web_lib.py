@@ -62,7 +62,7 @@ class HomePage:
             self.pom.login_modal.loading_icon,
             state="detached"
             )
-        self.page.wait_for_url(f"{url}")
+        self.page.wait_for_url(f"{self.url}")
         final_user = self.page.locator(self.pom.home.sign_in)
         show_user = final_user.text_content()
         if "Sign In" in show_user:
