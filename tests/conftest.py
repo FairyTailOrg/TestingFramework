@@ -1,7 +1,9 @@
 """Configuration file to configure the proper tests."""
+import base64
 import os
 
 import pytest
+import pytest_html
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 from pytest_html_reporter import attach
@@ -110,8 +112,12 @@ def pytest_runtest_makereport(item, call):
 
         screenshot_path = os.path.join(screenshots_dir, f"{item.name}.png")
         page.screenshot(path=screenshot_path)
+
         attach(data=page.screenshot(path=screenshot_path))
-        print(f"Screenshot saved to {screenshot_path}")
+        extra = getattr(report, 'extra', [])
+        extra.append(pytest_html.extras.image(screenshot_path))
+        extra.append(pytest_html.extras.html('<div>Additional HTML</div>'))
+        report.extra = extra
 
 
 @pytest.fixture(scope="session")
