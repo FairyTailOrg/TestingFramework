@@ -56,11 +56,13 @@ jobs:
         continue-on-error: false
       
       - name: Remove the config file.
+        if: always()
         run: |
           rm -f config/config_qa.env
 
       - name: Save artifacts.
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: tests-results
           path: results

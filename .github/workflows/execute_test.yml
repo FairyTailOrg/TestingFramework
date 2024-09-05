@@ -95,6 +95,7 @@ jobs:
         continue-on-error: true
       
       - name: Remove the config file.
+        if: always()
         run: | 
           rm -f config/config_${{ github.event.inputs.environment }}.env
 
