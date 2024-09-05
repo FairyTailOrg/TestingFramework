@@ -94,7 +94,7 @@ def create_screenshots_dir():
     return screenshots_dir
 
 
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     """Configure the pytest report.
 
@@ -102,22 +102,27 @@ def pytest_runtest_makereport(item, call):
         item (_type_): pytest class.
         call (_type_): pytest class.
     """
+    pytest_html_report = item.config.pluginmanager.getplugin("html")
     outcome = yield
     report = outcome.get_result()
+    
+    extra = getattr(report, 'extra', [])
 
-    if report.when == 'call' and report.failed:
-        screenshots_dir = create_screenshots_dir()
+    if report.when == 'call':
+        xfail = hasattr(report, "wasxfail")
+        if report.failed or xfail and "page" in item.funcargs:
+            page = item.funcargs["page"]
+            screenshots_dir = create_screenshots_dir()
+            screenshot_path = os.path.join(screenshots_dir, f"{item.name}.png")
+            screenshot_bytes = page.screenshot(path=screenshot_path)
+        
+        if (report.skipped and xfail) or (report.failed and not xfail):
+            attach(data=page.screenshot(path=screenshot_path))
+            extra.append(pytest_html_report.extras.image(base64.b64encode(screenshot_bytes).decode()))
+            extra.append(pytest_html_report.extras.html('<div></div>'))
 
-        page = item.funcargs['page']
 
-        screenshot_path = os.path.join(screenshots_dir, f"{item.name}.png")
-        page.screenshot(path=screenshot_path)
-
-        attach(data=page.screenshot(path=screenshot_path))
-        extra = getattr(report, 'extra', [])
-        extra.append(pytest_html.extras.image(screenshot_path))
-        extra.append(pytest_html.extras.html('<div>Additional HTML</div>'))
-        report.extra = extra
+        report.extras = extra
 
 
 @pytest.fixture(scope="session")
@@ -134,7 +139,6 @@ def browser_context_args(browser_context_args):
         **browser_context_args,
         'record_video_dir': create_screenshots_dir()
         }
-
 
 def pytest_addoption(parser):
     """Parameters in line.

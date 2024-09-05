@@ -29,7 +29,7 @@ class HomePage:
 
 class LoginModal:
     """Login modal class to navigate in page."""
-    
+
     def __init__(self):
         """Get all the xpath locators for login modal."""
         self.modal_inputs = "//*[@id='gigya-login-form']"
