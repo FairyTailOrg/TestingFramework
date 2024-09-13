@@ -5,7 +5,7 @@ import os
 import pytest
 import pytest_html
 from dotenv import load_dotenv
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Playwright, sync_playwright
 from pytest_html_reporter import attach
 
 from lib.logger_config import logger
@@ -44,12 +44,43 @@ def browser(playwright, pytestconfig, browser_names, log):
     Returns:
         _type_: playwright.browser instance.
     """
-    log.info(f"Browser instanced: {browser_names}")
     browser = getattr(
         playwright,
         browser_names
         ).launch(headless=pytestconfig.getoption("headless"))
     yield browser
+    browser.close()
+
+
+@pytest.fixture(scope="function")
+def mobile_browser(playwright, pytestconfig, browser_names):
+    """Browser instance from mobile browser params.
+
+    Args:
+        playwright (_type_): playwright instance.
+        pytestconfig (_type_): pytest class.
+
+    Returns:
+        _type_: playwright.browser instance.
+    """
+    # Use Playwright to launch a browser
+    if browser_names == 'firefox':
+        pytest.skip("There are not support in Firefox for mobile browsers.")
+
+    browser = getattr(
+        playwright,
+        browser_names,
+        ).launch(headless=pytestconfig.getoption("headless"))
+    # Define the iPhone 13 emulation settings
+    iPhone_13 = playwright.devices['iPhone 13']
+    # Create a new browser context with the iPhone 13 emulation
+    context = browser.new_context(**iPhone_13)
+    # Create a new page in the context
+    page = context.new_page()
+    yield page
+    # Clean up
+    page.close()
+    context.close()
     browser.close()
 
 
@@ -105,7 +136,7 @@ def pytest_runtest_makereport(item, call):
     pytest_html_report = item.config.pluginmanager.getplugin("html")
     outcome = yield
     report = outcome.get_result()
-    
+
     extra = getattr(report, 'extra', [])
 
     if report.when == 'call':
@@ -115,12 +146,13 @@ def pytest_runtest_makereport(item, call):
             screenshots_dir = create_screenshots_dir()
             screenshot_path = os.path.join(screenshots_dir, f"{item.name}.png")
             screenshot_bytes = page.screenshot(path=screenshot_path)
-        
+
         if (report.skipped and xfail) or (report.failed and not xfail):
             attach(data=page.screenshot(path=screenshot_path))
-            extra.append(pytest_html_report.extras.image(base64.b64encode(screenshot_bytes).decode()))
+            extra.append(pytest_html_report.extras.image(
+                base64.b64encode(screenshot_bytes).decode())
+                )
             extra.append(pytest_html_report.extras.html('<div></div>'))
-
 
         report.extras = extra
 
@@ -139,6 +171,7 @@ def browser_context_args(browser_context_args):
         **browser_context_args,
         'record_video_dir': create_screenshots_dir()
         }
+
 
 def pytest_addoption(parser):
     """Parameters in line.
@@ -163,6 +196,12 @@ def pytest_addoption(parser):
         action="store_true",
         default=False,
         help="Choose if headless or not"
+        )
+    parser.addoption(
+        "--mobile",
+        action="store",
+        default="",
+        help="Select a specific mobile to execute this."
         )
 
 

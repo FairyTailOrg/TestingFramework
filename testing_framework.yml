@@ -9,6 +9,7 @@ dependencies:
     - pytest-xdist
     - pytest-html
     - pytest-html-reporter
+    - pytest-logger
     - pytest-json
     - pytest-env
     - playwright
@@ -24,4 +25,4 @@ dependencies:
     - jsonschema
     - python-dotenv
 variables:
-    PYTHONPATH: "/usr/local/Caskroom/miniconda/base/envs/testing-framework:$PYTHONPATH"
+    PYTHONPATH: "/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"

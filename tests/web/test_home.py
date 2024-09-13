@@ -5,7 +5,7 @@ from tests.web.basetestcase import BaseTestCase
 
 class TestHome(BaseTestCase):
     @pytest.mark.smoke
-    @pytest.mark.api
+    @pytest.mark.web
     def test_home_headers(self):
         headers = self.home.check_utility_headers()
         assert headers[0] == 'Event Search'
