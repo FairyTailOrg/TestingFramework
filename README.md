@@ -35,7 +35,7 @@ Bash:
 Or force close the terminal and reopen it.
 
 To verify the Framework is working as expected you can try the examples provided
-by Bob using the command:
+using the command:
 
 Navigate to the base directory of the project:
 
@@ -43,14 +43,15 @@ Navigate to the base directory of the project:
 cd $PYTHONPATH
 ```
 
-```
-bob create-example framework --type=api,web
-```
-
 Web Example:
 Then run the API and Web Example:
 ```
 pytest -v tests/web --headless -m smoke
+```
+or use tags
+
+```
+pytest -v tests/ --headless -m web
 ```
 
 Api Example:
