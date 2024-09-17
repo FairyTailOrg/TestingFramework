@@ -212,8 +212,12 @@ def load_env(pytestconfig):
     Args:
         pytestconfig (pytestconfig): pytestconfiguration class.
     """
-    environment = pytestconfig.getoption("env")
+    try:
+        environment = pytestconfig.getoption("env")
 
-    env_file = f"config/config_{environment}.env"
+        env_file = f"config/config_{environment}.env"
 
-    load_dotenv(dotenv_path=env_file)
+        load_dotenv(dotenv_path=env_file)
+    except Exception as e:
+        log = logger
+        log.error(f"Ocurrió un error: {e}") 
