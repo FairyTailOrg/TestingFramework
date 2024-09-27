@@ -1,4 +1,4 @@
-name: Smoke API Tests
+name: Smoke Tests
 on:
   push:
     branches:
@@ -23,6 +23,11 @@ jobs:
       - name: Checkout repository.
         uses: actions/checkout@v4
 
+      - name: Export Python Path.
+        run: |
+            export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
+            echo $PYTHONPATH
+
       - name: create conda environment.
         uses: conda-incubator/setup-miniconda@v3
         with:
@@ -31,11 +36,6 @@ jobs:
           auto-activate-base: false
           activate-environment: testing-framework
           environment-file: testing_framework.yml
-
-      - name: Export Python Path.
-        run: |
-            export PYTHONPATH="/usr/share/miniconda/envs/testing-framework:$PYTHONPATH"
-            echo $PYTHONPATH
 
       - name: Install Playwright browsers
         run: |
