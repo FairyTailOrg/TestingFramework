@@ -63,7 +63,6 @@ def mobile_browser(playwright, pytestconfig, browser_names):
     Returns:
         _type_: playwright.browser instance.
     """
-    # Use Playwright to launch a browser
     if browser_names == 'firefox':
         pytest.skip("There are not support in Firefox for mobile browsers.")
 
@@ -71,13 +70,14 @@ def mobile_browser(playwright, pytestconfig, browser_names):
         playwright,
         browser_names,
         ).launch(headless=pytestconfig.getoption("headless"))
-    # Define the iPhone 13 emulation settings
+
     iPhone_13 = playwright.devices['iPhone 13']
-    # Create a new browser context with the iPhone 13 emulation
+
     context = browser.new_context(**iPhone_13)
-    # Create a new page in the context
+
     page = context.new_page()
     yield page
+    
     # Clean up
     page.close()
     context.close()
