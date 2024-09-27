@@ -38,7 +38,6 @@ jobs:
       - name: create conda environment.
         uses: conda-incubator/setup-miniconda@v3
         with:
-          mamba-version: "*"
           channels: conda-forge,bioconda,defaults
           auto-activate-base: false
           activate-environment: testing-framework
