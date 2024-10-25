@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - main
-  schedule:
+  #schedule:
     # Runs at 1:00 PM UTC every day (7:00 AM CST during Standard Time)
-    - cron: '0 13 * * *'
+    # - cron: '0 13 * * *'
 jobs:
   create-env:
     name: ${{ matrix.os }} 
